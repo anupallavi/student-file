@@ -155,7 +155,23 @@ void update()
   printf("RECORD UPDATED");
  }
 }
+int avlrollno(int rno)
+{
+ FILE *fp;
+ int c = 0;
+ fp = fopen("Record", "r");
+ while (!feof(fp))
+ {
+  fread(&stud, sizeof(stud), 1, fp);
 
+  if (rno == stud.rollno)
+  {
+   fclose(fp);
+   return 1;
+  }
+ }
+ fclose(fp);
+ return 0;
 void main()
 {
  int c, emp;
